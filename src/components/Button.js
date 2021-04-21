@@ -2,8 +2,8 @@
 
 const Button = (props) => {
   return (
-    <span style={{padding: props.padding}}>
-      <button style={{backgroundColor: props.color}}> {props.text} </button>
+    <span style={{padding: props.padding, marginLeft: props.left}}>
+      <button style={{backgroundColor: props.color, fontSize: props.size}}> {props.text} </button>
     </span>
   );
 }
