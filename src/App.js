@@ -1,7 +1,7 @@
 import Header from './components/Header';
 import Home from './components/Home';
 import AddTask from './components/AddTask';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (

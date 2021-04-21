@@ -3,6 +3,7 @@
 const NoTasks = () => {
   return (
     <div>
+      No Tasks
     </div>
   );
 }
