@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
 
-body {
+html {
   background-color: #F3F3F3;
 }
 h1 {
@@ -10,6 +10,12 @@ h1 {
   font-size: 55px;
   text-align: center;
   padding-top: 55px;
+}
+h2 {
+  text-align: center;
+  font-family: 'Original Surfer', cursive;
+  font-weight: normal;
+  margin-top: 60px;
 }
 button {
   padding: 10px 20px;
