@@ -2,19 +2,19 @@ import Button from './Button';
 import Tasks from './Tasks';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const Home = () => {
-  const [tasks, setTasks] = useState([
-    {
-      "id": 1,
-      "name": "Doctor's Appointment"
-    },
-    {
-      "id": 2,
-      "name": "AOS Assignment"
-    }
-  ]);
+const Home = (props) => {
+  const [tasks, setTasks] = useState([]);
+  useEffect(() => {
+    axios.get('http://localhost:5000/tasks')
+    .then(res => setTasks(res.data));
+  });
 
+  const deleteTask = (id) => {
+    axios.delete(`http://localhost:5000/tasks/${id}`)
+      .then(res => console.log(res));
+  }
 
   const green = '#21AC0F', grey = '#787878';
 
@@ -25,7 +25,7 @@ const Home = () => {
         <Button text='Remove All' color={grey} padding='20px'/>
       </div>
       <div className='tasksContainer'>
-        {tasks.length > 0 ? <Tasks tasks={tasks}/> : <h2> Your to-do list is empty, add a new task now! </h2>}
+        {tasks.length > 0 ? <Tasks delete={deleteTask} mode={props.mode} tasks={tasks}/> : <h2 style={{color: props.color}}> Your to-do list is empty, add a new task now! </h2>}
       </div>
     </>
   );

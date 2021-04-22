@@ -41,7 +41,7 @@ function App() {
             <AddTask color={changeColor()}/>
           </Route>
           <Route path='/'>
-            <Home />
+            <Home color={changeColor()} mode={mode}/>
           </Route>
         </Switch>
       </Router>
