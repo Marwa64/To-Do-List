@@ -2,7 +2,7 @@
 
 const Button = (props) => {
   return (
-    <span style={{padding: props.padding, marginLeft: props.left}}>
+    <span id={props.id} style={{padding: props.padding}}>
       <button style={{backgroundColor: props.color, fontSize: props.size}}> {props.text} </button>
     </span>
   );

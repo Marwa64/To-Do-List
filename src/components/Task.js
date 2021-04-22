@@ -8,8 +8,10 @@ const Task = (props) => {
     <div className='task'>
       <span>
         {props.name}
-        <FaTrash onClick={props.delete} color="#E40000"/>
-        <FaPencilAlt onClick={edit} />
+        <span className='taskIcons'>
+          <FaTrash onClick={props.delete} color="#E40000"/>
+          <FaPencilAlt onClick={edit} />
+        </span>
       </span>
     </div>
   );

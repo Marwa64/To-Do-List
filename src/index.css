@@ -15,7 +15,6 @@ h2 {
   text-align: center;
   font-family: 'Original Surfer', cursive;
   font-weight: normal;
-  margin-top: 60px;
   font-size: 26px;
 }
 button {
@@ -38,7 +37,8 @@ a {
   cursor: default;
 }
 .tasksContainer {
-    margin-top: 150px;
+    margin-top: 140px;
+    padding: 25px;
 }
 .task {
   display: grid;
@@ -50,23 +50,68 @@ a {
   font-size: 24px;
 }
 svg {
-  float: right;
   padding: 0px 15px;
   margin-right: 10px;
   cursor: pointer;
+}
+.taskIcons {
+  float: right;
+}
+.form-control {
+  display: grid;
+  grid-template-columns: auto auto;
+  width: 90%;
 }
 input {
   font-size: 25px;
   border-radius: 10px;
   border: 1px solid grey;
   padding: 5px;
-  margin-left: 50px;
   font-family: 'Shadows Into Light Two', cursive;
-  width: 400px;
+  height: 45px;
   text-align: center;
 }
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#save {
+  margin-left: 240px;
+}
+@media only screen and (max-width: 550px) {
+  .homeButtons {
+    float: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 0px;
+  }
+  .tasksContainer {
+      margin-top: 20px;
+      padding: 0px;
+  }
+  .taskIcons {
+    float: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .task {
+    text-align: center;
+  }
+  svg {
+    margin-top: 15px;
+  }
+  .form-control {
+    grid-template-columns: none;
+  }
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #save {
+    margin-left: 50px;
+  }
 }
