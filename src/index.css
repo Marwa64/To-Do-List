@@ -15,7 +15,7 @@ h2 {
   text-align: center;
   font-family: 'Original Surfer', cursive;
   font-weight: normal;
-  font-size: 26px;
+  font-size: 24px;
 }
 button {
   padding: 10px 20px;
@@ -48,6 +48,14 @@ a {
   margin-bottom: 30px;
   font-family: 'Shadows Into Light Two', cursive;
   font-size: 24px;
+  left: -200%;
+  position: relative;
+  animation: slide 0.5s forwards;
+  animation-delay: 0s;
+}
+@keyframes slide {
+    0% { left: -200%; }
+    100% { left: 0; }
 }
 svg {
   padding: 0px 15px;
@@ -63,13 +71,14 @@ svg {
   width: 90%;
 }
 input {
-  font-size: 25px;
+  font-size: 24px;
   border-radius: 10px;
   border: 1px solid grey;
   padding: 5px;
   font-family: 'Shadows Into Light Two', cursive;
-  height: 45px;
+  height: 40px;
   text-align: center;
+  width: 80%;
 }
 .center {
   display: flex;
@@ -88,7 +97,7 @@ input {
     padding-right: 0px;
   }
   .tasksContainer {
-      margin-top: 20px;
+      margin-top: 40px;
       padding: 0px;
   }
   .taskIcons {
@@ -99,6 +108,7 @@ input {
   }
   .task {
     text-align: center;
+    padding: 15px;
   }
   svg {
     margin-top: 15px;
@@ -106,12 +116,10 @@ input {
   .form-control {
     grid-template-columns: none;
   }
-  form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
   #save {
     margin-left: 50px;
+  }
+  input {
+    width: 95%;
   }
 }

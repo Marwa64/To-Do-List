@@ -5,7 +5,7 @@ const Task = (props) => {
     console.log("edit " + props.name);
   }
   return (
-    <div className='task'>
+    <div className='task' style={{animationDelay: props.animationDelay + 's'}}>
       <span>
         {props.name}
         <span className='taskIcons'>
