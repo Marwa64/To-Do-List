@@ -8,13 +8,13 @@ const Home = (props) => {
 
   const [tasks, setTasks] = useState([]);
   useEffect(() => {
-    axios.get('https://my-json-server.typicode.com/marwa64/To-Do-List/tasks')
+    axios.get('https://my-json-server.typicode.com/marwa64/To-Do-List/tasks') //http://localhost:5000/tasks/
     .then(res => setTasks(res.data));
   }, [tasks]);
 
 
   const deleteTask = (id) => {
-    axios.delete(`https://my-json-server.typicode.com/marwa64/To-Do-List/tasks/${id}`)
+    axios.delete(`http://localhost:5000/tasks/${id}`)
       .then(() => setTasks(tasks.filter(task => task.id !== id)))
       .catch(err => console.log(err));
   }
@@ -22,7 +22,7 @@ const Home = (props) => {
     if (tasks.length > 0) {
       const ids = [];
       tasks.map(task => ids.push(task.id));
-      axios.delete(`https://my-json-server.typicode.com/marwa64/To-Do-List/tasks/${ids}`)
+      axios.delete(`http://localhost:5000/tasks/${ids}`)
         .catch(err => console.log(err));
     }
   }
