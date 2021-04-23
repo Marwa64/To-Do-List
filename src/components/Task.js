@@ -26,7 +26,7 @@ const Task = (props) => {
       <span>
         {props.task.name}
         <span className='taskIcons'>
-          <FaTrash onClick={deleteTask} color="#E40000"/>
+          <FaTrash className='trash' onClick={deleteTask} color="#E40000"/>
           <FaPencilAlt onClick={edit} />
         </span>
       </span>
