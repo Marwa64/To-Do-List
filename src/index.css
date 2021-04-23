@@ -83,12 +83,12 @@ input {
   border: 1px solid grey;
   height: 40px;
   text-align: center;
-  width: 82%;
+  width: 85%;
 }
 .taskName {
   border: none;
-  user-select: none;
   background-color: inherit;
+  width: 350px;
 }
 .taskName::placeholder {
   color: black;
@@ -101,7 +101,7 @@ input {
 #save {
   margin-left: 240px;
 }
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 599px) {
   .homeButtons {
     float: none;
     display: flex;
@@ -132,7 +132,11 @@ input {
   #save {
     margin-left: 50px;
   }
-  input {
+  #taskInput {
+    width: 100%;
+  }
+  .taskName {
     width: 95%;
+    text-align: center;
   }
 }

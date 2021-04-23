@@ -8,7 +8,13 @@ const AddTask = (props) => {
   const red = '#CF0000', blue = '#0075E0';
 
   const add = () => {
-    let task = {name: document.querySelector("#taskInput").value};
+    let taskInput = document.querySelector("#taskInput");
+    if (taskInput.value === '') {
+      taskInput.style.border = '2px solid red';
+      taskInput.style.backgroundColor = '#fff1f1';
+      return;
+    }
+    let task = {name: taskInput.value};
     axios.post('http://localhost:5000/tasks', task);
     history.push("/");
   }
@@ -18,7 +24,7 @@ const AddTask = (props) => {
       <form className='center'>
         <div className='form-control'>
           <h2 style={{color: props.color}}> Task Name: </h2>
-           <input id="taskInput" type='text' placeholder='Enter Task' maxLength='35'/>
+           <input id="taskInput" type='text' placeholder='Enter Task' maxLength='29'/>
         </div>
       </form>
       <div className='center'>
