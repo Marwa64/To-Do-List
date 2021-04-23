@@ -1,7 +1,7 @@
 # To-Do-List
 
 A To-Do List developed using React JS with all the main functionalities such as adding, deleting, and editing tasks. As well as a dark mode feature. 
-The mock <a href='https://github.com/typicode/json-server'> JSON Server </a> is used as the backend.
+<a href='https://github.com/typicode/json-server'> JSON Server </a> is used as a mock REST API.
 
 Live Version: https://marwa64.github.io/To-Do-List/
 
