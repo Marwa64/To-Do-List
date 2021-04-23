@@ -18,15 +18,13 @@ const Home = (props) => {
       .then(() => setTasks(tasks.filter(task => task.id !== id)))
       .catch(err => console.log(err));
   }
-  const deleteAll = async () => {
-    const ids = [];
-    let count = tasks.length - 1;
-    while (count >= 0) {
-      ids.push(tasks[count].id);
-      count--;
+  const deleteAll = () => {
+    if (tasks.length > 0) {
+      const ids = [];
+      tasks.map(task => ids.push(task.id));
+      axios.delete(`http://localhost:5000/tasks/${ids}`)
+        .catch(err => console.log(err));
     }
-    axios.delete(`http://localhost:5000/tasks/${ids}`)
-      .catch(err => console.log(err));
   }
 
   const green = '#21AC0F', grey = '#787878';

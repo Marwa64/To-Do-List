@@ -46,7 +46,7 @@ a {
 .task {
   display: grid;
   background-color: #D3D3D3;
-  padding: 27px;
+  padding: 22px;
   border-radius: 10px;
   margin-bottom: 30px;
   font-family: 'Shadows Into Light Two', cursive;
@@ -74,14 +74,24 @@ svg {
   width: 90%;
 }
 input {
+  font-family: 'Shadows Into Light Two', cursive;
   font-size: 24px;
   border-radius: 10px;
-  border: 1px solid grey;
   padding: 5px;
-  font-family: 'Shadows Into Light Two', cursive;
+}
+#taskInput {
+  border: 1px solid grey;
   height: 40px;
   text-align: center;
   width: 82%;
+}
+.taskName {
+  border: none;
+  user-select: none;
+  background-color: inherit;
+}
+.taskName::placeholder {
+  color: black;
 }
 .center {
   display: flex;

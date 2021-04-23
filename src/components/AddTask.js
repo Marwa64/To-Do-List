@@ -8,7 +8,7 @@ const AddTask = (props) => {
   const red = '#CF0000', blue = '#0075E0';
 
   const add = () => {
-    let task = {name: document.querySelector("input").value};
+    let task = {name: document.querySelector("#taskInput").value};
     axios.post('http://localhost:5000/tasks', task);
     history.push("/");
   }
@@ -18,7 +18,7 @@ const AddTask = (props) => {
       <form className='center'>
         <div className='form-control'>
           <h2 style={{color: props.color}}> Task Name: </h2>
-           <input type='text' placeholder='Enter Task' maxLength='35'/>
+           <input id="taskInput" type='text' placeholder='Enter Task' maxLength='35'/>
         </div>
       </form>
       <div className='center'>
