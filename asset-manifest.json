@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Marwa64.github.io/To-Do-List/static/css/main.341d9384.chunk.css",
+    "main.js": "/Marwa64.github.io/To-Do-List/static/js/main.83e8bbc7.chunk.js",
+    "main.js.map": "/Marwa64.github.io/To-Do-List/static/js/main.83e8bbc7.chunk.js.map",
+    "runtime-main.js": "/Marwa64.github.io/To-Do-List/static/js/runtime-main.2b5c9323.js",
+    "runtime-main.js.map": "/Marwa64.github.io/To-Do-List/static/js/runtime-main.2b5c9323.js.map",
+    "static/js/2.cc3344fa.chunk.js": "/Marwa64.github.io/To-Do-List/static/js/2.cc3344fa.chunk.js",
+    "static/js/2.cc3344fa.chunk.js.map": "/Marwa64.github.io/To-Do-List/static/js/2.cc3344fa.chunk.js.map",
+    "static/js/3.fcc335f5.chunk.js": "/Marwa64.github.io/To-Do-List/static/js/3.fcc335f5.chunk.js",
+    "static/js/3.fcc335f5.chunk.js.map": "/Marwa64.github.io/To-Do-List/static/js/3.fcc335f5.chunk.js.map",
+    "index.html": "/Marwa64.github.io/To-Do-List/index.html",
+    "static/css/main.341d9384.chunk.css.map": "/Marwa64.github.io/To-Do-List/static/css/main.341d9384.chunk.css.map",
+    "static/js/2.cc3344fa.chunk.js.LICENSE.txt": "/Marwa64.github.io/To-Do-List/static/js/2.cc3344fa.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2b5c9323.js",
+    "static/js/2.cc3344fa.chunk.js",
+    "static/css/main.341d9384.chunk.css",
+    "static/js/main.83e8bbc7.chunk.js"
+  ]
+}
