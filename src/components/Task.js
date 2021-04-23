@@ -30,7 +30,7 @@ const Task = (props) => {
     task.style.border = 'none';
     task.readOnly = true;
     if (task.value !== props.task.name)
-      axios.put(`http://localhost:5000/tasks/${props.task.id}`, {name: task.value});
+      axios.put(`https://my-json-server.typicode.com/marwa64/To-Do-List/${props.task.id}`, {name: task.value});
   }
 
   const deleteTask = () => {

@@ -15,7 +15,7 @@ const AddTask = (props) => {
       return;
     }
     let task = {name: taskInput.value};
-    axios.post('http://localhost:5000/tasks', task);
+    axios.post('https://my-json-server.typicode.com/marwa64/To-Do-List/tasks', task);
     history.push("/");
   }
 
