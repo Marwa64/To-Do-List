@@ -8,9 +8,9 @@ const Home = (props) => {
 
   const [tasks, setTasks] = useState([]);
   useEffect(() => {
-    axios.get('https://my-json-server.typicode.com/marwa64/To-Do-List/tasks') //http://localhost:5000/tasks/
+    axios.get('http://localhost:5000/tasks/')
     .then(res => setTasks(res.data));
-  }, [tasks]);
+  }, []);
 
 
   const deleteTask = (id) => {

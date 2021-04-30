@@ -1,20 +1,3 @@
 {
-  "tasks": [
-    {
-      "name": "Test 1",
-      "id": 1
-    },
-    {
-      "name": "AOS Assignment",
-      "id": 2
-    },
-    {
-      "name": "Egirna Placement",
-      "id": 3
-    },
-    {
-      "name": "Test 2",
-      "id": 4
-    }
-  ]
+  "tasks": []
 }

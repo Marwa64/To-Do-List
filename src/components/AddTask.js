@@ -15,8 +15,8 @@ const AddTask = (props) => {
       return;
     }
     let task = {name: taskInput.value};
-    axios.post('http://localhost:5000/tasks', task);
-    history.push("/");
+    axios.post('http://localhost:5000/tasks', task)
+    .then(() => history.push("/"));
   }
 
   return (
