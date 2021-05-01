@@ -1,5 +1,5 @@
-import Button from './Button';
-import Tasks from './Tasks';
+import Button from '../layout/Button';
+import Tasks from '../tasks/Tasks';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';

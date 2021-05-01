@@ -1,6 +1,6 @@
-import Header from './components/Header';
-import Home from './components/Home';
-import AddTask from './components/AddTask';
+import Header from './components/layout/Header';
+import Home from './components/pages/Home';
+import AddTask from './components/pages/AddTask';
 import { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 

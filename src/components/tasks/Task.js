@@ -1,5 +1,5 @@
 import { FaPencilAlt, FaTrash } from 'react-icons/fa';
-import Button from './Button';
+import Button from '../layout/Button';
 import { useState } from 'react';
 import axios from 'axios';
 

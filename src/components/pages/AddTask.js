@@ -1,4 +1,4 @@
-import Button from './Button';
+import Button from '../layout/Button';
 import { Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
