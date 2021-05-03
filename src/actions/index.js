@@ -1,7 +1,8 @@
 
-export const toggleEdit = () => {
+export const toggleEdit = (id) => {
     return {
-      type: 'TOGGLE_EDIT'
+      type: 'TOGGLE_EDIT',
+      id
     };
 };
 
@@ -11,10 +12,11 @@ export const toggleMode = () => {
     };
 };
 
-export const setTasks = (tasks) => {
+export const addTask = (task, edit) => {
   return {
-    type: 'SET',
-    tasks
+    type: 'ADD',
+    task,
+    edit
   };
 };
 

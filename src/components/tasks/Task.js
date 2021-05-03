@@ -6,13 +6,12 @@ import { toggleEdit } from '../../actions';
 
 const Task = (props) => {
   const dispatch = useDispatch();
-  const edit = useSelector(state => state.edit);
   const darkMode = useSelector(state => state.darkMode);
 
   const id = `id${props.task.id}`;
 
   const editTask = () => {
-    dispatch(toggleEdit());
+    dispatch(toggleEdit(props.task.id));
     let task = document.querySelector(`#${id}`);
     task.focus();
     task.value = props.task.name;
@@ -28,7 +27,7 @@ const Task = (props) => {
       task.style.backgroundColor = '#fff1f1';
       return;
     }
-    dispatch(toggleEdit());
+    dispatch(toggleEdit(props.task.id));
     task.placeholder = task.value;
     task.style.backgroundColor = 'inherit';
     task.style.border = 'none';
@@ -54,8 +53,8 @@ const Task = (props) => {
       <span>
         <input autoComplete="off" id={id} maxLength='29' className='taskName' type='text' placeholder={props.task.name} readOnly/>
         <span className='taskIcons'>
-          {!edit ? <FaTrash className='trash' onClick={deleteTask} color="#E40000"/> : ''}
-          {edit ? <Button text='Save Edit' action={saveEdit} color='#0075E0' padding='25px 0px' size='18px'/> : <FaPencilAlt onClick={editTask} />}
+          {!props.task.edit ? <FaTrash className='trash' onClick={deleteTask} color="#E40000"/> : ''}
+          {props.task.edit ? <Button text='Save Edit' action={saveEdit} color='#0075E0' padding='25px 0px' size='18px'/> : <FaPencilAlt onClick={editTask} />}
         </span>
       </span>
     </div>

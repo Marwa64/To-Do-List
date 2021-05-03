@@ -4,15 +4,20 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { setTasks, deleteTaskState, deleteAllTasks } from '../../actions';
+import { addTask, deleteTaskState, deleteAllTasks } from '../../actions';
 
 const Home = (props) => {
   const dispatch = useDispatch();
   const tasks = useSelector(state => state.tasks);
 
+const setUpTasks = (tasks) => {
+  dispatch(deleteAllTasks());
+  tasks.map(task => dispatch(addTask(task, false)));
+}
+
   useEffect(() => {
     axios.get('http://localhost:5000/tasks/')
-    .then(res => dispatch(setTasks(res.data)));
+    .then(res => setUpTasks(res.data));
   }, []);
 
 
