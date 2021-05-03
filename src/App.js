@@ -1,32 +1,14 @@
 import Header from './components/layout/Header';
 import Home from './components/pages/Home';
 import AddTask from './components/pages/AddTask';
-import { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function App() {
-  const [mode, setMode] = useState('light');
+  const darkMode = useSelector(state => state.darkMode);
 
-  let bgColor, font;
-  const changeMode = () => {
-    let background = document.querySelector("html");
-    let title = document.querySelector("h1");
-
-    if (mode === 'dark') {
-      bgColor = '#F3F3F3';
-      font = 'black';
-      setMode('light');
-    } else {
-      bgColor = '#1f1f1f';
-      font = 'white';
-      setMode('dark');
-    }
-
-    background.style.backgroundColor = bgColor;
-    title.style.color = font;
-  }
   const changeColor = () => {
-    if (mode === 'dark'){
+    if (darkMode){
       return 'white';
     }
     return 'black';
@@ -34,14 +16,14 @@ function App() {
 
   return (
     <div>
-      <Header changeMode={changeMode} color={changeColor()}/>
+      <Header color={changeColor()}/>
       <Router>
         <Switch>
           <Route path='/AddTask'>
             <AddTask color={changeColor()}/>
           </Route>
           <Route path='/'>
-            <Home color={changeColor()} mode={mode}/>
+            <Home color={changeColor()}/>
           </Route>
         </Switch>
       </Router>

@@ -9,7 +9,8 @@ const AddTask = (props) => {
 
   const add = () => {
     let taskInput = document.querySelector("#taskInput");
-    if (taskInput.value === '') {
+    let val = taskInput.value.trim();
+    if (!val) {
       taskInput.style.border = '2px solid red';
       taskInput.style.backgroundColor = '#fff1f1';
       return;

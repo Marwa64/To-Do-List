@@ -1,14 +1,18 @@
 import { FaPencilAlt, FaTrash } from 'react-icons/fa';
 import Button from '../layout/Button';
-import { useState } from 'react';
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleEdit } from '../../actions';
 
 const Task = (props) => {
+  const dispatch = useDispatch();
+  const edit = useSelector(state => state.edit);
+  const darkMode = useSelector(state => state.darkMode);
+
   const id = `id${props.task.id}`;
-  const [edit, toggleEdit] = useState(false);
 
   const editTask = () => {
-    toggleEdit(true);
+    dispatch(toggleEdit());
     let task = document.querySelector(`#${id}`);
     task.focus();
     task.value = props.task.name;
@@ -24,7 +28,7 @@ const Task = (props) => {
       task.style.backgroundColor = '#fff1f1';
       return;
     }
-    toggleEdit(false);
+    dispatch(toggleEdit());
     task.placeholder = task.value;
     task.style.backgroundColor = 'inherit';
     task.style.border = 'none';
@@ -38,21 +42,15 @@ const Task = (props) => {
   }
 
   const changeBg = () => {
-    if (props.mode === 'dark') {
+    if (darkMode) {
       return '#8c8c8c';
     } else {
       return '#D3D3D3';
     }
   }
-  const changeFont = () => {
-    if (props.mode === 'dark') {
-      return 'white';
-    } else {
-      return 'black';
-    }
-  }
+
   return (
-    <div className='task' style={{animationDelay: props.animationDelay + 's', backgroundColor: changeBg(), color: changeFont()}}>
+    <div className='task' style={{animationDelay: props.animationDelay + 's', backgroundColor: changeBg(), color: props.fontColor}}>
       <span>
         <input autoComplete="off" id={id} maxLength='29' className='taskName' type='text' placeholder={props.task.name} readOnly/>
         <span className='taskIcons'>

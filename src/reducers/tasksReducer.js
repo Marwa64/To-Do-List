@@ -1,16 +1,12 @@
 
 const tasksReducer = (state = [], action) => {
   switch(action.type) {
-    case 'ADD':
-      return [
-        ...state,
-        {
-          name: action.name
-        }
-      ]
+    case 'SET':
+      return action.tasks
     case 'DELETE':
       return state.filter(task => task.id !== action.id)
-
+    case 'DELETE_ALL':
+      return []
     default:
       return state
   }

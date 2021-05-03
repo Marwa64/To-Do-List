@@ -1,10 +1,8 @@
 
 const modeReducer = (state = false, action) => {
   switch(action.type) {
-    case 'LIGHT':
-      return false;
-      case 'DARK':
-        return true;
+    case 'TOGGLE_MODE':
+      return !state;
       default:
         return state;
   }
