@@ -32,3 +32,16 @@ export const deleteAllTasks = () => {
     type: 'DELETE_ALL'
   };
 };
+
+export const displayError = (message) => {
+  return {
+    type: 'DISPLAY_ERROR',
+    message
+  }
+}
+
+export const removeError = () => {
+  return {
+    type: 'REMOVE_ERROR'
+  }
+}

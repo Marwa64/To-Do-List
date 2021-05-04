@@ -1,6 +1,7 @@
 import Header from './components/layout/Header';
 import Home from './components/pages/Home';
 import AddTask from './components/pages/AddTask';
+import Error from './components/Error';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -17,6 +18,7 @@ function App() {
   return (
     <div>
       <Header color={changeColor()}/>
+      <Error />
       <Router>
         <Switch>
           <Route path='/AddTask'>

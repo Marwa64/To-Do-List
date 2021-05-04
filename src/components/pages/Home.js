@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { addTask, deleteTaskState, deleteAllTasks } from '../../actions';
+import { displayError, removeError, addTask, deleteTaskState, deleteAllTasks } from '../../actions';
 
 const Home = (props) => {
   const dispatch = useDispatch();
@@ -12,27 +12,35 @@ const Home = (props) => {
 
 const setUpTasks = (tasks) => {
   dispatch(deleteAllTasks());
+  dispatch(removeError());
   tasks.map(task => dispatch(addTask(task, false)));
 }
 
   useEffect(() => {
     axios.get('http://localhost:5000/tasks/')
-    .then(res => setUpTasks(res.data));
+    .then(res => setUpTasks(res.data))
+    .catch(err => dispatch(displayError(err.message)));
   }, []);
 
 
   const deleteTask = (id) => {
     axios.delete(`http://localhost:5000/tasks/${id}`)
-      .then(() => dispatch(deleteTaskState(id)))
-      .catch(err => console.log(err));
+      .then(() => {
+        dispatch(deleteTaskState(id));
+        dispatch(removeError());
+       })
+      .catch(err => dispatch(displayError(err.message)));
   }
   const deleteAll = () => {
     if (tasks.length > 0) {
       const ids = [];
       tasks.map(task => ids.push(task.id));
       axios.delete(`http://localhost:5000/tasks/${ids}`)
-        .then(() => dispatch(deleteAllTasks()))
-        .catch(err => console.log(err));
+        .then(() => {
+          dispatch(deleteAllTasks());
+          dispatch(removeError());
+        })
+        .catch(err => dispatch(displayError(err.message)));
     }
   }
 

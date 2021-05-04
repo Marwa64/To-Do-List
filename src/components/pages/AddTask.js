@@ -2,9 +2,12 @@ import Button from '../layout/Button';
 import { Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { displayError, removeError } from '../../actions';
 
 const AddTask = (props) => {
-  let history = useHistory();
+  const dispatch = useDispatch();
+  const history = useHistory();
   const red = '#CF0000', blue = '#0075E0';
 
   const add = () => {
@@ -17,7 +20,11 @@ const AddTask = (props) => {
     }
     let task = {name: taskInput.value};
     axios.post('http://localhost:5000/tasks', task)
-    .then(() => history.push("/"));
+    .then(() => {
+      dispatch(removeError());
+      history.push("/");
+    })
+    .catch(err => dispatch(displayError(err.message)));
   }
 
   return (

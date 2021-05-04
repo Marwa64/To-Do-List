@@ -2,7 +2,7 @@ import { FaPencilAlt, FaTrash } from 'react-icons/fa';
 import Button from '../layout/Button';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleEdit } from '../../actions';
+import { displayError, removeError, toggleEdit } from '../../actions';
 
 const Task = (props) => {
   const dispatch = useDispatch();
@@ -33,7 +33,9 @@ const Task = (props) => {
     task.style.border = 'none';
     task.readOnly = true;
     if (task.value !== props.task.name)
-      axios.put(`http://localhost:5000/tasks/${props.task.id}`, {name: task.value});
+      axios.put(`http://localhost:5000/tasks/${props.task.id}`, {name: task.value})
+      .then(() => dispatch(removeError()))
+      .catch(err => dispatch(displayError(err.message)));
   }
 
   const deleteTask = () => {
