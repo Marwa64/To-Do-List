@@ -1,9 +1,10 @@
+import { DISPLAY_ERROR, REMOVE_ERROR } from "../actions/types";
 
 const errorReducer = (state = '', action) => {
   switch (action.type) {
-    case 'DISPLAY_ERROR':
+    case DISPLAY_ERROR:
       return action.message;
-    case 'REMOVE_ERROR':
+    case REMOVE_ERROR:
       return '';
     default:
       return state;

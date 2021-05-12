@@ -1,15 +1,25 @@
 import axios from 'axios';
+import {
+  TOGGLE_EDIT,
+  TOGGLE_MODE,
+  SET_TASK,
+  UPDATE_TASK,
+  DELETE_TASK,
+  DELETE_ALL,
+  DISPLAY_ERROR,
+  REMOVE_ERROR
+} from './types';
 
 export const toggleEdit = (id) => {
     return {
-      type: 'TOGGLE_EDIT',
+      type: TOGGLE_EDIT,
       id
     };
 };
 
 export const toggleMode = () => {
     return {
-      type: 'TOGGLE_MODE'
+      type: TOGGLE_MODE
     };
 };
 
@@ -18,7 +28,7 @@ export const setTasks = () => async dispatch => {
   .then(res => {
       removeError();
       res.data.map(task => dispatch({
-         type: 'SET_TASK',
+         type: SET_TASK,
          task: task,
          edit: false
        })
@@ -32,7 +42,7 @@ export const updateTask = (id, taskName) => async dispatch => {
   .then(() => {
     removeError()
     dispatch({
-       type: 'UPDATE_TASK',
+       type: UPDATE_TASK,
        id,
        name: taskName
      })
@@ -45,7 +55,7 @@ export const deleteTaskState = (id) => async dispatch => {
     .then(() => res => {
         removeError();
         dispatch({
-           type: 'DELETE',
+           type: DELETE_TASK,
            id
          })
        })
@@ -57,24 +67,21 @@ export const deleteAllTasks = (ids) => async dispatch => {
     .then(() => {
       removeError()
       dispatch({
-        type: 'DELETE_ALL'
+        type: DELETE_ALL
        })
     })
     .catch(err => displayError(err.message));
-  return {
-    type: 'DELETE_ALL'
-  };
 };
 
 export const displayError = (message) => {
   return {
-    type: 'DISPLAY_ERROR',
+    type: DISPLAY_ERROR,
     message
   }
 }
 
 export const removeError = () => {
   return {
-    type: 'REMOVE_ERROR'
+    type: REMOVE_ERROR
   }
 }
