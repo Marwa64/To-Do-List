@@ -1,8 +1,7 @@
-import { useSelector } from 'react-redux'
+import { connect } from 'react-redux'
 
-const Error = () => {
-  const message = useSelector(state => state.error);
-
+const Error = ({ message }) => {
+  console.log(message);
   return (
     <>
     {message ?
@@ -11,4 +10,10 @@ const Error = () => {
     </>
   );
 }
-export default Error;
+
+const mapStateToProps = (state) => {
+  return {
+    message: state.error
+  }
+}
+export default connect(mapStateToProps, null)(Error);

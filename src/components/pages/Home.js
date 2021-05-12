@@ -2,22 +2,20 @@ import Button from '../layout/Button';
 import Tasks from '../tasks/Tasks';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { setTasks, deleteAllTasks } from '../../store/actions';
 
 const Home = (props) => {
-  const dispatch = useDispatch();
-  const tasks = useSelector(state => state.tasks);
 
   useEffect(() => {
-    dispatch(setTasks());
+    props.setTasks();
   }, []);
 
   const deleteAll = () => {
-    if (tasks.length > 0) {
+    if (props.tasks.length > 0) {
       const ids = [];
-      tasks.map(task => ids.push(task.id));
-      dispatch(deleteAllTasks(ids));
+      props.tasks.map(task => ids.push(task.id));
+      props.deleteAllTasks(ids);
     }
   }
 
@@ -30,10 +28,23 @@ const Home = (props) => {
         <Button action={deleteAll} text='Remove All' color={grey} padding='20px'/>
       </div>
       <div className='tasksContainer'>
-        {tasks.length > 0 ? <Tasks tasks={tasks} fontColor={props.color}/> : <h2 style={{color: props.color}}> Your to-do list is empty, add a new task now! </h2>}
+        {props.tasks.length > 0 ? <Tasks tasks={props.tasks} fontColor={props.color}/> : <h2 style={{color: props.color}}> Your to-do list is empty, add a new task now! </h2>}
       </div>
     </>
   );
 }
 
-export default Home;
+const mapStateToProps = state => {
+  return {
+    tasks: state.tasks
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setTasks: () => dispatch(setTasks()),
+    deleteAllTasks: ids => dispatch(deleteAllTasks(ids))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

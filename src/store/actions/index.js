@@ -26,7 +26,10 @@ export const toggleMode = () => {
 export const setTasks = () => async dispatch => {
   axios.get('http://localhost:5000/tasks/')
   .then(res => {
-      removeError();
+      dispatch({ type: REMOVE_ERROR });
+      dispatch({
+        type: DELETE_ALL
+       })
       res.data.map(task => dispatch({
          type: SET_TASK,
          task: task,
@@ -34,43 +37,43 @@ export const setTasks = () => async dispatch => {
        })
      )}
    )
-  .catch(err => displayError(err.message))
+  .catch(err => dispatch({ type: DISPLAY_ERROR, message: err.message}))
 };
 
 export const updateTask = (id, taskName) => async dispatch => {
   axios.put(`http://localhost:5000/tasks/${id}`, {name: taskName})
   .then(() => {
-    removeError()
+    dispatch({ type: REMOVE_ERROR });
     dispatch({
        type: UPDATE_TASK,
        id,
        name: taskName
      })
   })
-  .catch(err => displayError(err.message))
+  .catch(err => dispatch({ type: DISPLAY_ERROR, message: err.message}))
 };
 
 export const deleteTaskState = (id) => async dispatch => {
   axios.delete(`http://localhost:5000/tasks/${id}`)
-    .then(() => res => {
-        removeError();
+    .then(() => {
+        dispatch({ type: REMOVE_ERROR });
         dispatch({
            type: DELETE_TASK,
            id
          })
        })
-    .catch(err => displayError(err.message));
+    .catch(err => dispatch({ type: DISPLAY_ERROR, message: err.message}));
 };
 
 export const deleteAllTasks = (ids) => async dispatch => {
   axios.delete(`http://localhost:5000/tasks/${ids}`)
     .then(() => {
-      removeError()
+      dispatch({ type: REMOVE_ERROR });
       dispatch({
         type: DELETE_ALL
        })
     })
-    .catch(err => displayError(err.message));
+    .catch(err => dispatch({ type: DISPLAY_ERROR, message: err.message}));
 };
 
 export const displayError = (message) => {

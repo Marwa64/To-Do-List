@@ -9,14 +9,14 @@ import {
 const tasksReducer = (state = [], action) => {
   switch(action.type) {
     case SET_TASK:
-    return [
-            ...state,
-            {
-              id: action.task.id,
-              name: action.task.name,
-              edit: action.edit
-            }
-          ]
+      return [
+              ...state,
+              {
+                id: action.task.id,
+                name: action.task.name,
+                edit: action.edit
+              }
+            ]
     case UPDATE_TASK:
       return state.map(task => task.id === action.id ? {...task, name: action.name} : task)
     case DELETE_TASK:

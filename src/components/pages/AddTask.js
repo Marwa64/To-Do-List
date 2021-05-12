@@ -2,11 +2,10 @@ import Button from '../layout/Button';
 import { Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { displayError, removeError } from '../../store/actions';
 
-const AddTask = (props) => {
-  const dispatch = useDispatch();
+const AddTask = ({ color, displayError, removeError }) => {
   const history = useHistory();
   const red = '#CF0000', blue = '#0075E0';
 
@@ -21,17 +20,17 @@ const AddTask = (props) => {
     let task = {name: taskInput.value};
     axios.post('http://localhost:5000/tasks', task)
     .then(() => {
-      dispatch(removeError());
+      removeError();
       history.push("/");
     })
-    .catch(err => dispatch(displayError(err.message)));
+    .catch(err => displayError(err.message));
   }
 
   return (
     <div style={{marginTop: '140px'}}>
       <form className='center'>
         <div className='form-control'>
-          <h2 style={{color: props.color}}> Task Name: </h2>
+          <h2 style={{color}}> Task Name: </h2>
            <input id="taskInput" type='text' placeholder='Enter Task' maxLength='29'/>
         </div>
       </form>
@@ -43,4 +42,12 @@ const AddTask = (props) => {
   );
 }
 
-export default AddTask;
+
+const mapDispatchToProps = dispatch => {
+  return {
+    displayError: msg => dispatch(displayError(msg)),
+    removeError: () => dispatch(removeError())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(AddTask);
