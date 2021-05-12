@@ -1,7 +1,7 @@
 import { FaPencilAlt, FaTrash } from 'react-icons/fa';
 import Button from '../layout/Button';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateTask,  deleteTaskState, toggleEdit } from '../../actions';
+import { updateTask,  deleteTaskState, toggleEdit } from '../../store/actions';
 
 const Task = (props) => {
   const dispatch = useDispatch();

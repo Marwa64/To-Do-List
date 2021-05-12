@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { displayError, removeError } from '../../actions';
+import { displayError, removeError } from '../../store/actions';
 
 const AddTask = (props) => {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import { FaMoon } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleMode } from '../../actions';
+import { toggleMode } from '../../store/actions';
 
 const Header = (props) => {
   const dispatch = useDispatch();

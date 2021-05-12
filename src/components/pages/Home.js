@@ -3,7 +3,7 @@ import Tasks from '../tasks/Tasks';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setTasks, deleteAllTasks } from '../../actions';
+import { setTasks, deleteAllTasks } from '../../store/actions';
 
 const Home = (props) => {
   const dispatch = useDispatch();
