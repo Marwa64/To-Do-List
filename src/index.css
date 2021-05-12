@@ -109,6 +109,10 @@ input {
   border-radius: 5px;
   padding: 10px 0px;
 }
+.closeError {
+  position: absolute;
+  right: 0;
+}
 @media only screen and (max-width: 599px) {
   .homeButtons {
     float: none;
@@ -131,7 +135,7 @@ input {
     text-align: center;
     padding: 15px;
   }
-  svg {
+  .taskIcons > svg {
     margin-top: 15px;
   }
   .form-control {
