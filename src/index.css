@@ -101,6 +101,14 @@ input {
 #save {
   margin-left: 240px;
 }
+.error {
+  background-color: #ec6363;
+  color: white;
+  font-size: 20px;
+  font-family: 'Original Surfer', cursive;
+  border-radius: 5px;
+  padding: 10px 0px;
+}
 @media only screen and (max-width: 599px) {
   .homeButtons {
     float: none;
