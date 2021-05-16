@@ -1,17 +1,14 @@
 import { FaPencilAlt, FaTrash } from 'react-icons/fa';
 import Button from '../layout/Button';
-import axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux';
-import { displayError, removeError, toggleEdit } from '../../actions';
+import { connect } from 'react-redux';
+import { updateTask,  deleteTaskState, toggleEdit } from '../../store/actions';
 
 const Task = (props) => {
-  const dispatch = useDispatch();
-  const darkMode = useSelector(state => state.darkMode);
 
   const id = `id${props.task.id}`;
 
   const editTask = () => {
-    dispatch(toggleEdit(props.task.id));
+    props.toggleEdit(props.task.id);
     let task = document.querySelector(`#${id}`);
     task.focus();
     task.value = props.task.name;
@@ -27,23 +24,21 @@ const Task = (props) => {
       task.style.backgroundColor = '#fff1f1';
       return;
     }
-    dispatch(toggleEdit(props.task.id));
+    props.toggleEdit(props.task.id);
     task.placeholder = task.value;
     task.style.backgroundColor = 'inherit';
     task.style.border = 'none';
     task.readOnly = true;
     if (task.value !== props.task.name)
-      axios.put(`http://localhost:5000/tasks/${props.task.id}`, {name: task.value})
-      .then(() => dispatch(removeError()))
-      .catch(err => dispatch(displayError(err.message)));
+      props.updateTask(props.task.id, task.value);
   }
 
   const deleteTask = () => {
-    props.delete(props.task.id);
+    props.deleteTaskState(props.task.id);
   }
 
   const changeBg = () => {
-    if (darkMode) {
+    if (props.darkMode) {
       return '#8c8c8c';
     } else {
       return '#D3D3D3';
@@ -63,4 +58,19 @@ const Task = (props) => {
   );
 }
 
-export default Task;
+const mapStateToProps = state => {
+  return {
+    darkMode: state.darkMode
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateTask: (id, name) => dispatch(updateTask(id, name)),
+    deleteTaskState: id => dispatch(deleteTaskState(id)),
+    toggleEdit: (id) => dispatch(toggleEdit(id))
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Task);

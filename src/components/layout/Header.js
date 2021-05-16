@@ -1,10 +1,8 @@
 import { FaMoon } from 'react-icons/fa';
-import { useSelector, useDispatch } from 'react-redux';
-import { toggleMode } from '../../actions';
+import { connect } from 'react-redux';
+import { toggleMode } from '../../store/actions';
 
-const Header = (props) => {
-  const dispatch = useDispatch();
-  const darkMode = useSelector(state => state.darkMode);
+const Header = ({ color, darkMode, toggleMode }) => {
 
   const changeMode = () => {
     let background = document.querySelector("html");
@@ -18,15 +16,27 @@ const Header = (props) => {
       title.style.color = 'white';
     }
 
-    dispatch(toggleMode());
+    toggleMode();
   }
 
   return (
     <>
-      <FaMoon color={props.color} style={{float: 'right'}} onClick={changeMode}/>
+      <FaMoon color={color} style={{float: 'right'}} onClick={changeMode}/>
       <h1> To Do List </h1>
     </>
   );
 }
 
-export default Header;
+const mapStateToProps = state => {
+  return {
+    darkMode: state.darkMode
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleMode: () => dispatch(toggleMode())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
